@@ -1,0 +1,50 @@
+Report: C++ Weather Data Storage System
+Course: ENCS205 - Data Structures
+Teacher: SWATI GUPTA MA'AM
+
+Date: September 9, 2025
+
+1. Project Objective
+The primary objective of this project was to design and implement a Weather Data Storage System in C++. This application serves as a practical demonstration of fundamental data structures, focusing on the use of 2D arrays (implemented with C++ vectors) for managing tabular data. The system is capable of storing, retrieving, and deleting temperature records for various cities across a defined range of years, while also addressing challenges like memory layout and sparse datasets.
+
+2. System Design and Architecture
+The system is architecturally centered around two core components: a custom Abstract Data Type (ADT) for weather records and a 2D vector for data storage.
+
+Weather Record ADT: A WeatherRecord struct was defined to encapsulate all the necessary information for a single data point. This ADT contains:
+
+Date: A nested struct holding the day, month, and year.
+
+City: A std::string to store the city's name.
+
+Temperature: A double to accurately store the temperature reading.
+
+Core Data Structure: A 2D vector (std::vector<std::vector<double>>) forms the backbone of the storage system. This grid is organized with rows representing years and columns representing cities, allowing for direct and efficient access to data points.
+
+3. Key Implementation Details
+Memory Representation Strategy: The system was designed to analyze the difference between row-major and column-major memory access.
+
+Row-Major Access: Implemented by iterating through years (rows) first, then cities (columns). This aligns with C++'s default memory layout for 2D arrays, resulting in high performance due to efficient CPU caching.
+
+Column-Major Access: Simulated by iterating through cities first, then years. This demonstrated a less efficient access pattern in C++, highlighting the performance penalty caused by frequent cache misses.
+
+Sparse Data Handling: To manage missing data entries, a sentinel value approach was chosen. A constant, SENTINEL_VALUE (-999.0), is used to initialize the data grid. This value acts as a placeholder, indicating that no valid data has been recorded for a specific city and year. This method maintains the simplicity and fast access times of the array structure.
+
+4. Performance Analysis
+The efficiency of the system's key operations was analyzed in terms of time and space complexity, where Y is the number of years and C is the number of cities.
+
+Space Complexity: O(Y * C)
+
+The memory usage scales linearly with the size of the data grid.
+
+Time Complexity:
+
+insert(), retrieve(), remove(): O(Y + C)
+
+These operations require a linear search through the year and city index lists to locate the correct cell in the grid.
+
+display...Access(): O(Y * C)
+
+These functions must traverse every element in the grid, making their runtime proportional to the grid's total size.
+
+5. Conclusion
+This project successfully fulfills the assignment requirements by creating a functional Weather Data Storage System. It demonstrates a solid understanding of ADTs, 2D data structures, memory access patterns, and complexity analysis. The resulting C++ application is an effective tool for managing structured weather data
